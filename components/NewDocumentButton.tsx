@@ -1,8 +1,9 @@
 import React from 'react';
+import {Button} from "@/components/ui/button";
 
-function NewDocumentButton(props) {
+function NewDocumentButton() {
     return (
-        <div></div>
+        <div><Button>New Document</Button></div>
     );
 }
 
