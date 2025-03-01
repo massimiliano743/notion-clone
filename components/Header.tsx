@@ -1,5 +1,8 @@
 'use client'
 import {SignedIn, SignedOut, SignInButton, useUser, UserButton} from "@clerk/nextjs";
+import Breacrumb from "@/components/Breacrumb";
+
+
 
 function Header(){
     const { user } = useUser();
@@ -8,6 +11,7 @@ function Header(){
             {user && (
                 <h1 className="text-2xl">{user?.firstName} Space</h1>
             )}
+            <Breacrumb/>
         <div>
             <SignedOut>
                 <SignInButton />
