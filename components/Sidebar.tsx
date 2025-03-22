@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sheet"
 import {MenuIcon} from "lucide-react";
 import {useCollection} from "react-firebase-hooks/firestore";
-import {SignedIn, SignedOut, SignInButton, useUser, UserButton} from "@clerk/nextjs";
+import {useUser} from "@clerk/nextjs";
 import {collectionGroup, query, DocumentData, where} from "@firebase/firestore";
 import {db} from "@/firebase";
 import {useEffect, useState} from "react";
@@ -33,7 +33,7 @@ function Sidebar()
         editor: [],
     });
     const {user} = useUser();
-    const [data, loading, error] = useCollection(
+    const [data] = useCollection(
         user && (
             query(
                 collectionGroup(db, "rooms"),

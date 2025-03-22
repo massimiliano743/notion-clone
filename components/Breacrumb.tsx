@@ -30,7 +30,7 @@ function Breacrumb() {
                     if (!segment) return null;
                     const href = `/${segments.slice(0, index + 1).join("/")}`;
                     const isLast = index === segments.length - 1;
-                    const [data, loading, error] = useDocumentData(doc(db, "documents", segment))
+                    const [data] = useDocumentData(doc(db, "documents", segment))
                     return (
                         <Fragment key={segment}>
                             <BreadcrumbItem key={segment}>

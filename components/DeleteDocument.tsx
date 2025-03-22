@@ -1,6 +1,6 @@
+'use client'
 import {Button} from "./ui/button";
 
-'use client '
 import React, {useTransition} from 'react';
 
 import {
