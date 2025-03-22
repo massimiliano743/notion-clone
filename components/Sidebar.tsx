@@ -82,15 +82,16 @@ function Sidebar()
                         ))}
                     </>
                 )}
-            </div>
+
             {groupedData.editor.length > 0 && (
                 <>
                     <h2 className={"text-gray-500 font-semibold text-sm"}> Share with Me</h2>
-                    {groupedData.owner.map((doc) => (
+                    {groupedData.editor.map((doc) => (
                         <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`}></SidebarOption>
                     ))}
                 </>
             )}
+            </div>
         </>
     );
     return(

@@ -6,6 +6,11 @@ import {doc, updateDoc} from "@firebase/firestore";
 import {db} from "@/firebase";
 import {useDocumentData} from "react-firebase-hooks/firestore";
 import Editor from "@/components/ui/Editor";
+import useOwner from "@/lib/useOwner";
+import DeleteDocument from "@/components/DeleteDocument";
+import InviteUser from "@/components/InviteUser";
+import ManageUsers from "@/components/ManageUsers";
+import Avatars from "@/components/Avatars";
 
 function Document({id}: {
     id: string
@@ -13,6 +18,8 @@ function Document({id}: {
     const [data, loading, error] = useDocumentData(doc(db, "documents", id))
     const [input, setInput] = useState("");
     const [isUpdating, startTransition] = useTransition();
+
+    const isOwner = useOwner();
 
     useEffect(() => {
         if (data) {
@@ -42,9 +49,19 @@ function Document({id}: {
                         }}
                     />
                     <Button type={"submit"} disabled={isUpdating}>{isUpdating ? "Updating..." : "Update"}</Button>
+
+                    {isOwner && (
+                        <>
+                            <InviteUser/>
+                            <DeleteDocument/>
+                        </>
+                    )}
                 </form>
             </div>
-            <div>
+
+            <div className={"flex m-w-6xl mx-auto justify-between items-center mb-5"}>
+                <ManageUsers/>
+                <Avatars/>
 
             </div>
             <hr className={"pb-10"}></hr>
