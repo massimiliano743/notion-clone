@@ -1,19 +1,25 @@
 'use client';
 import {useMyPresence, useOthers} from "@liveblocks/react/suspense";
-import {PointerEvent} from "react";
+import {PointerEvent, useEffect} from "react";
 import FollowPointer from "@/components/FollowPointer";
 
 function LivecursorProvider({children}: { children: React.ReactNode }) {
     const [myPresence, updateMyPresence] = useMyPresence();
     const others = useOthers();
 
+    useEffect(() => {
+        if (myPresence) {
+        }
+    }, [myPresence]);
+
     function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
         const cursor = {x: Math.floor(e.clientX), y: Math.floor(e.clientY)};
-        updateMyPresence({cursor})
+        updateMyPresence({cursor});
     }
 
     function handlePointerLeave(e: PointerEvent<HTMLDivElement>) {
-        updateMyPresence({cursor: null})
+        void e;
+        updateMyPresence({cursor: null});
     }
 
     return (

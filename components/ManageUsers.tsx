@@ -1,19 +1,19 @@
+'use client'
 import {Button} from "./ui/button";
-import {Input} from "./ui/input";
 
-'use client '
-import React, {FormEvent, useState, useTransition} from 'react';
+
+import React, {useState, useTransition} from 'react';
 
 import {
-    Dialog, DialogClose,
+    Dialog,
     DialogContent,
-    DialogDescription, DialogFooter,
+    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import {usePathname, useRouter} from "next/navigation";
-import {deleteDocument, inviteUserToDocument, removeUserFromDocument} from "@/actions/actions";
+
+import {removeUserFromDocument} from "@/actions/actions";
 import {toast} from "sonner";
 import {useUser} from "@clerk/nextjs";
 import useOwner from "@/lib/useOwner";

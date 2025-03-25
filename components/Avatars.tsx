@@ -24,7 +24,7 @@ function Avatars() {
             </p>
             <div className={"flex -space-x-5 "}>
                 {all.map((other, i) => (
-                    <TooltipProvider key={other?.id + i}>
+                    <TooltipProvider key={other?.id + "" + i}>
                         <Tooltip>
                             <TooltipTrigger>
                                 <Avatar className={"border-2 hover:z-50"}>

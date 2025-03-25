@@ -2,10 +2,12 @@
 import Document from "@/components/Document"
 import {use} from "react"
 
-function DocumentPage({params}: {
-    params: Promise<{ id: string }> | { id: string }
-}) {
-    const resolvedParams = use(params as Promise<{ id: string }>)
+async function resolveParams(paramsPromise: Promise<{ id: string }>) {
+    return await paramsPromise
+}
+
+function DocumentPage(props: { params: Promise<{ id: string }> }) {
+    const resolvedParams = use(resolveParams(props.params))
 
     return (
         <div className="flex flex-col flex-1 min-h-screen">

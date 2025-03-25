@@ -1,6 +1,6 @@
+'use client'
 import {Button} from "./ui/button";
 
-'use client '
 import React, {useTransition} from 'react';
 
 import {
@@ -21,7 +21,7 @@ function DeleteDocument() {
     const pathname = usePathname();
     const router = useRouter();
     const handleDelete = async () => {
-        const roomId: string = pathname.split("/").pop();
+        const roomId: string = pathname.split("/").pop() ?? "";
         console.log("room id", roomId);
         if (!roomId) return;
         startTransition(async () => {

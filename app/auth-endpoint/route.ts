@@ -8,13 +8,17 @@ export async function POST(req: NextRequest) {
     const {sessionClaims} = await auth();
     const {room} = await req.json();
 
-    const session = liveblock.prepareSession(sessionClaims?.email!, {
+    if (!sessionClaims?.email || !sessionClaims?.fullName || !sessionClaims?.image) {
+        throw new Error("Some required user information is missing");
+    }
+
+    const session = liveblock.prepareSession(sessionClaims.email, {
         userInfo: {
-            name: sessionClaims?.fullName!,
-            email: sessionClaims?.email!,
-            avatar: sessionClaims?.image!
+            name: sessionClaims.fullName,
+            email: sessionClaims.email,
+            avatar: sessionClaims.image
         },
-    })
+    });
     const usersInRoom = await adminDb.collectionGroup("rooms")
         .where("userId", "==", sessionClaims?.email)
         .get();
