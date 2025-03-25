@@ -1,6 +1,6 @@
 'use client'
 import {usePathname} from "next/navigation";
-import {Slash} from "lucide-react";
+import {Slash} from "lucide-react"
 import {
     Breadcrumb,
     BreadcrumbItem,
